@@ -16,12 +16,19 @@ csv = CSV.read(ARGV.last)
 
 tournament = {}
 tournament['name']     = csv.first[0] unless csv.first[0].nil?
-tournament['location'] = csv.first[1]
-tournament['state']    = csv.first[2]
-tournament['level']    = csv.first[3]
-tournament['division'] = csv.first[4]
-tournament['year']     = csv.first[5].to_i
-tournament['date']     = Date.parse(csv.first[6])
+tournament['short name']     = csv.first[1] unless csv.first[1].nil?
+tournament['location'] = csv.first[2]
+tournament['state']    = csv.first[3]
+tournament['level']    = csv.first[4]
+tournament['division'] = csv.first[5]
+tournament['year']     = csv.first[6].to_i
+tournament['date']     = Date.parse(csv.first[7]) unless csv.first[7].nil?
+tournament['start date']     = Date.parse(csv.first[8]) unless csv.first[8].nil?
+tournament['end date']     = Date.parse(csv.first[9]) unless csv.first[9].nil?
+tournament['awards date']     = Date.parse(csv.first[10]) unless csv.first[10].nil?
+tournament['medals'] = csv.first[11].to_i unless csv.first[11].nil?
+tournament['trophies'] = csv.first[12].to_i unless csv.first[12].nil?
+tournament['n offset'] = csv.first[13].to_i unless csv.first[13].nil?
 
 events =
   csv[1].map.with_index do |event_name, i|
@@ -41,7 +48,7 @@ teams =
     team['suffix']              = row[3]
     team['city']                = row[4]
     team['state']               = row[5]
-    team['subdivision']         = row[6]
+    team['track']         = row[6]
     team['exhibition']          = true if row[7] == 'Yes'
     team['penalty points']      = row[8] # will be converted to penalty later
     team.reject { |_, v| v.nil? }
