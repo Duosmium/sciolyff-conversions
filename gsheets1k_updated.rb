@@ -28,7 +28,7 @@ tournament['end date']     = Date.parse(csv.first[9]) unless csv.first[9].nil?
 tournament['awards date']     = Date.parse(csv.first[10]) unless csv.first[10].nil?
 tournament['medals'] = csv.first[11].to_i unless csv.first[11].nil?
 tournament['trophies'] = csv.first[12].to_i unless csv.first[12].nil?
-tournament['bids'] = = csv.first[13].to_i unless csv.first[13].nil?
+tournament['bids'] = csv.first[13].to_i unless csv.first[13].nil?
 tournament['n offset'] = csv.first[14].to_i unless csv.first[14].nil?
 
 events =
